@@ -84,7 +84,5 @@ auto vector_train(){
 
 }
 
-auto func_train(){
-}
 
 

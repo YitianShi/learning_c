@@ -25,7 +25,6 @@ int main(int, char**) {
     cout<<sta<<endl;
 
 
-
     {
         auto f_s = make_shared<fox<int>>(10);
         weak_ptr<fox<int>> f_w;

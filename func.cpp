@@ -3,6 +3,18 @@
 
 int sta = 1;
 
+namespace n2{
+    void f(){
+        cout << 2<< endl;
+        }
+}
+
+namespace n1{
+    void f(){
+        cout << 1<< endl;
+        }
+}
+
 template <typename T1, class T2>
 void animal_voice(animal<T1> &a, T2 &b){
     a.hey();
@@ -47,6 +59,13 @@ void train_func(){
     forest_func func2 = forest;
 
     Func([](int a){forest(a);}); // give Func a function, which calls forest function
+
+    using n1::f;
+    f();
+    {
+        using n2::f;
+        f();
+    }
 }
 
 
