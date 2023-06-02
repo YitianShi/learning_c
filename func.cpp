@@ -32,7 +32,7 @@ void forest(){
     fox<char> f2 = {2, 3, 4, 'd'};
 
     auto f3 = f1+f2;
-    std::cout<<f2<<std::endl;
+    std::cout<<f2<<std::endl; 
 
 }
 

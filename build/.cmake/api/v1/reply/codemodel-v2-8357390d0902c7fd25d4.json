@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "main_cmake::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main_cmake-Debug-d1b9e62b64a9edd8c995.json",
+					"jsonFile" : "target-main_cmake-Debug-e1676a5cab5ecbbb3eba.json",
 					"name" : "main_cmake",
 					"projectIndex" : 0
 				}
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/yitian/Desktop/c++/build",
-		"source" : "/home/yitian/Desktop/c++"
+		"build" : "/home/yitian/Desktop/learning_c/build",
+		"source" : "/home/yitian/Desktop/learning_c"
 	},
 	"version" : 
 	{

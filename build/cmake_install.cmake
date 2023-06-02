@@ -1,4 +1,4 @@
-# Install script for directory: /home/yitian/Desktop/c++
+# Install script for directory: /home/yitian/Desktop/learning_c
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yitian/Desktop/c++/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yitian/Desktop/learning_c/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

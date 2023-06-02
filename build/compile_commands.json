@@ -1,12 +1,13 @@
 [
 {
-  "directory": "/home/yitian/Desktop/c++/build",
-  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include  -g   -o CMakeFiles/main_cmake.dir/main.cpp.o -c /home/yitian/Desktop/c++/main.cpp",
-  "file": "/home/yitian/Desktop/c++/main.cpp"
+  "directory": "/home/yitian/Desktop/learning_c/build",
+  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I../include  -g   -o CMakeFiles/main_cmake.dir/main.cpp.o -c /home/yitian/Desktop/learning_c/main.cpp",
+  "file": "/home/yitian/Desktop/learning_c/main.cpp"
 },
+
 {
-  "directory": "/home/yitian/Desktop/c++/build",
-  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include  -g   -o CMakeFiles/main_cmake.dir/func.cpp.o -c /home/yitian/Desktop/c++/func.cpp",
-  "file": "/home/yitian/Desktop/c++/func.cpp"
+  "directory": "/home/yitian/Desktop/learning_c/build",
+  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I../include  -g   -o CMakeFiles/main_cmake.dir/func.cpp.o -c /home/yitian/Desktop/learning_c/func.cpp",
+  "file": "/home/yitian/Desktop/learning_c/func.cpp"
 }
 ]
