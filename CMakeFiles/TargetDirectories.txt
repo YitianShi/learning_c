@@ -1,0 +1,3 @@
+/home/yitian/Desktop/c++/CMakeFiles/rebuild_cache.dir
+/home/yitian/Desktop/c++/CMakeFiles/edit_cache.dir
+/home/yitian/Desktop/c++/CMakeFiles/main_cmake.dir
