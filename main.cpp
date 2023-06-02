@@ -9,7 +9,7 @@
 using namespace std;
 
 extern int sta;
-extern void forest();
+extern void forest(int a=20);
 
 
 int Node::id;
@@ -38,6 +38,8 @@ int main(int, char**) {
         }
         // out of this scope, f_s is deleted
     }
+    LOG("Shi");
+
     }
 
 

@@ -9,7 +9,7 @@ void animal_voice(animal<T1> &a, T2 &b){
     cout << "it says "<< b << endl;
 }
 
-void forest(){
+void forest(int def = 20){
 
      for (int i=0; i<5; i++)
     {
@@ -35,4 +35,20 @@ void forest(){
     std::cout<<f2<<std::endl;
 
 }
+
+void Func(void(*func)(int)){
+    func(10);
+}
+
+void train_func(){
+    auto fo = forest;
+    void(*func)(int) = forest;
+    typedef void(*forest_func)(int);
+    forest_func func2 = forest;
+
+    Func([](int a){forest(a);}); // give Func a function, which calls forest function
+}
+
+
+
 

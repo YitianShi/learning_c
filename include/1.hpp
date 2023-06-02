@@ -15,6 +15,7 @@ template <class T>
 class animal{
     public:
     static int b;
+    static int a;
     int x, y, z;
     int* li;
     T id;    
@@ -29,24 +30,24 @@ class animal{
     // Constructor
 
     animal(const T &id): x(0), y(0),z(0){
-        li = new int[10];
-        for (int i = 0; i < 10; i++)
+        li = new int[b];
+        for (int i = 0; i < b; i++)
         {
             li[i] = i;
         }
-        b++;
+        a++;
         this->id = id;
         std::cout<<"Hello, I'm default animal with id "<<this->id<<std::endl;
         }
 
     animal(int a, int b, int c, const T &id): x(a), y(b),z(c)
         {
-        li = new int[10]; 
-        for (int i = 0; i < 10; i++)
+        li = new int[b]; 
+        for (int i = 0; i < b; i++)
             {
                 li[i] = i;
             }        
-        b++;
+        a++;
         this->id = id; 
         std::cout<<"Hello, I'm animal with id "<<this->id<<std::endl;}
 
@@ -55,13 +56,13 @@ class animal{
 
     template <class T2>
     animal(const animal<T2>& a2):x(a2.x), y(a2.y), z(a2.z){
-        li = new int[10]; 
+        li = new int[b]; 
         //memcpy(li, a2.li, sizeof(li));
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < b; i++)
         {
             li[i] = a2.li[i]*2;
         }
-        b++; 
+        a++; 
         if ( typeid( a2.id ) == typeid(this->id) ) 
         {
             this->id = a2.id;
@@ -126,7 +127,9 @@ class animal{
 };
 
 template <class T>
-int animal<T>::b =0;
+int animal<T>::b = 20;
+template <class T>
+int animal<T>::a = 20;
 
 
 template <class T>

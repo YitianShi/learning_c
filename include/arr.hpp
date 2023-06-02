@@ -3,6 +3,18 @@ using namespace std;
 #include<array>
 #include<vector>
 #include<tuple>
+#include<utility>
+#include<functional>
+#include<unordered_map>
+
+
+#define DEBUG 0
+
+#if DEBUG==0
+#define LOG(x)
+#else
+#define LOG(x) cout << "Hi, Debuger "<<x<<endl
+#endif
 
 typedef struct Vertex{
     float x, y, z;
@@ -22,7 +34,7 @@ ostream& operator<<(ostream& stream, const Vertex& vertex)
     return stream;
 }
 
-void arr_train(){
+auto arr_train(){
     int a[7];
     int* b= new int[7];
     *(b+2) = 10;
@@ -30,24 +42,29 @@ void arr_train(){
     delete[] b;
     array<int, 20> c;
 
+    c[0] = 2;
+
+
 }
 
-void string_train(){
+auto string_train(){
       // String
     char* name = "Shi";
     string name2="Shi";
     int name_size = name2.size();
     name2 += "Hello"; 
     string name3 = "S"s + "hi";
+
+    return tuple<string, string, string>(name, name2, name3);
 }
 
-void lambda_train(string &name2){
+auto lambda_train(string &name2){
     //lambda
     auto func = [=](int a) mutable {name2 += " yitian";}; // without mutable illegal
     func(5); // name2 still not changed
 }
 
-void vector_train(){
+auto vector_train(){
 
     //vector
     
@@ -57,11 +74,17 @@ void vector_train(){
     vt.emplace_back(2, 3, 4);
     vt.push_back({2, 3, 4});
     vt.push_back({2, 3, 4});
+    vt.erase(vt.begin()+1); //remove second element
 
     for (V& v: vt)
     cout<<v<<endl; 
+
+    for (auto k = vt.begin(); k!= vt.end(); k++)
+    cout<<*k<<endl; 
+
 }
 
-/*
-static tuple<string, string> func2()
-{return ;}*/
+auto func_train(){
+}
+
+
