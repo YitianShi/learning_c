@@ -39,12 +39,28 @@ void forest(int def = 20){
     st++;
     }
 
-    fox<char> f1('c');
+    fox<char> f1('a');
     fox<char>::total_number();
-    fox<char> f2 = {2, 3, 4, 'd'};
+    fox<char> f2 = {2, 3, 4, 'b'};
+
 
     auto f3 = f1+f2;
     std::cout<<f2<<std::endl; 
+    animal<char>* f4= new fox<char>(2, 3, 4, 'c');
+    delete f4; // after deletion, the deconstructor of animal is called but fox isn't. So virtual ~animal() should be defined.
+
+    {
+        auto f_s = make_shared<fox<char>>('f');
+        weak_ptr<fox<char>> f_w;
+        {
+            auto f_s2 = f_s;
+            f_w = f_s;
+            auto f_u=make_unique<animal<char>>(1,2,3,'g');
+            // out of this scope, f_w and f_u are deleted
+            f_u->hey();
+        }
+        // out of this scope, f_s is deleted
+    }
 
 }
 

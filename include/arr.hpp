@@ -1,10 +1,14 @@
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 #include<array>
 #include<vector>
 #include<tuple>
+#include<cmath>
 #include<utility>
 #include<functional>
+#include<optional>
 #include<unordered_map>
 
 
@@ -16,8 +20,10 @@ using namespace std;
 #define LOG(x) cout << "Hi, Debuger "<<x<<endl
 #endif
 
+
 typedef struct Vertex{
-    float x, y, z;
+    union {struct {float a, b, c;};
+    struct {float x, y, z;};};
     Vertex(float x, float y, float z):
     x(x), y(y), z(z)
     {}
@@ -26,6 +32,14 @@ typedef struct Vertex{
     x(v.x), y(v.y), z(v.z)
     {cout<<"Copy"<<endl;}
 
+    float* give_a()
+    {
+        cout << "x=a="<<a<<endl;
+        cout << "y=b="<<b<<endl;
+        cout << "z=c="<<c<<endl;
+        return &a;
+    }
+   
 } V;
 
 ostream& operator<<(ostream& stream, const Vertex& vertex)
@@ -33,6 +47,23 @@ ostream& operator<<(ostream& stream, const Vertex& vertex)
     stream<<"x: " << vertex.x<<"y: " <<vertex.y<<"z: " <<vertex.z<<endl;
     return stream;
 }
+
+auto punning_train(){
+    V v1={2, 3, 19};
+
+    int* b=(int*)&v1;
+
+    float c = *(float*)((char*)&v1 + 4); // print the b's value
+    
+    cout << c << endl;
+    
+    auto d = v1.give_a();
+
+    d[0] = 33;
+    d[1] = 44;
+    d[2] = 50;
+    
+    }
 
 auto arr_train(){
     int a[7];
@@ -82,6 +113,17 @@ auto vector_train(){
     for (auto k = vt.begin(); k!= vt.end(); k++)
     cout<<*k<<endl; 
 
+}
+
+optional<string> data(int a){
+    if (a==1) return "found";
+    else return {};
+}
+
+bool train_optional(){
+    auto opt=data(0);
+    string val = opt.value_or("not found");
+    return opt.has_value();
 }
 
 

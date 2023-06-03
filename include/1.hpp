@@ -179,3 +179,6 @@ static std::ostream& operator<<(std::ostream &stream, const animal<char>& other)
     return stream;
 }
 
+template <class T>
+class dog: public animal<T>{
+};
