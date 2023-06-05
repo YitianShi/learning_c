@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/home/yitian/Desktop/c++/func.cpp
+iostream
+-
+animal.hpp
+/home/yitian/Desktop/c++/animal.hpp
+
 /home/yitian/Desktop/c++/main.cpp
 iostream
 -
 iou.hpp
 /home/yitian/Desktop/c++/iou.hpp
-1.hpp
-/home/yitian/Desktop/c++/1.hpp
+animal.hpp
+/home/yitian/Desktop/c++/animal.hpp
 arr.hpp
 /home/yitian/Desktop/c++/arr.hpp
 timer.hpp
@@ -1048,7 +1054,7 @@ opencv2/imgproc.hpp
 opencv2/core.hpp
 /usr/local/include/opencv4/opencv2/opencv2/core.hpp
 
-include/1.hpp
+include/animal.hpp
 iostream
 -
 memory
@@ -1075,6 +1081,8 @@ optional
 -
 unordered_map
 -
+algorithm
+-
 
 include/box.hpp
 iostream
@@ -1098,5 +1106,11 @@ include/trd.hpp
 iostream
 -
 thread
+-
+future
+-
+mutex
+-
+vector
 -
 

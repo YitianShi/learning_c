@@ -1,11 +1,10 @@
 #include <iostream>
 #include "iou.hpp"
-#include "1.hpp"
+#include "animal.hpp"
 #include "arr.hpp"
 #include "timer.hpp"
 #include "trd.hpp"
 #include "opencv2/opencv.hpp"
-
 
 
 using namespace std;
@@ -17,7 +16,6 @@ extern void forest(int a=20);
 int Node::id;
 int main(int, char**) {
     Timer timer;
-    punning_train();
     forest();
     auto[name1, name2, name3]=string_train();
     Node n1;
@@ -32,7 +30,7 @@ int main(int, char**) {
    
     LOG("Shi");
     //multi_thread();
-
+    trd_train();
     }
 
 

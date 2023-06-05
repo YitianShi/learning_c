@@ -182,3 +182,5 @@ static std::ostream& operator<<(std::ostream &stream, const animal<char>& other)
 template <class T>
 class dog: public animal<T>{
 };
+
+

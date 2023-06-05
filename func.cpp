@@ -1,5 +1,5 @@
 #include<iostream>
-#include "1.hpp"
+#include "animal.hpp"
 
 int sta = 1;
 
@@ -68,7 +68,8 @@ void Func(void(*func)(int)){
     func(10);
 }
 
-void train_func(){
+
+void func_train(){
     auto fo = forest;
     void(*func)(int) = forest;
     typedef void(*forest_func)(int);
@@ -84,6 +85,9 @@ void train_func(){
     }
 }
 
-
-
+auto lambda_train(string &name2){
+    //lambda
+    auto func = [=](int a) mutable {name2 += " yitian";}; // without mutable illegal
+    func(5); // name2 still not changed
+}
 

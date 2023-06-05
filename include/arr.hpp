@@ -10,7 +10,7 @@ using namespace std;
 #include<functional>
 #include<optional>
 #include<unordered_map>
-
+#include<algorithm>
 
 #define DEBUG 0
 
@@ -19,7 +19,6 @@ using namespace std;
 #else
 #define LOG(x) cout << "Hi, Debuger "<<x<<endl
 #endif
-
 
 typedef struct Vertex{
     union {struct {float a, b, c;};
@@ -48,23 +47,6 @@ ostream& operator<<(ostream& stream, const Vertex& vertex)
     return stream;
 }
 
-auto punning_train(){
-    V v1={2, 3, 19};
-
-    int* b=(int*)&v1;
-
-    float c = *(float*)((char*)&v1 + 4); // print the b's value
-    
-    cout << c << endl;
-    
-    auto d = v1.give_a();
-
-    d[0] = 33;
-    d[1] = 44;
-    d[2] = 50;
-    
-    }
-
 auto arr_train(){
     int a[7];
     int* b= new int[7];
@@ -74,8 +56,17 @@ auto arr_train(){
     array<int, 20> c;
 
     c[0] = 2;
+}
 
-
+void sort_train(){
+    vector<int> values ={1,2,3,5,4};
+    sort(values.begin(), values.end(), greater<int>());
+    sort(values.begin(), values.end(),[](int a, int b)
+    {
+        if (a==1) return false;
+        if(b==1) return true;
+        return  a>b;
+    });
 }
 
 auto string_train(){
@@ -87,12 +78,6 @@ auto string_train(){
     string name3 = "S"s + "hi";
 
     return tuple<string, string, string>(name, name2, name3);
-}
-
-auto lambda_train(string &name2){
-    //lambda
-    auto func = [=](int a) mutable {name2 += " yitian";}; // without mutable illegal
-    func(5); // name2 still not changed
 }
 
 auto vector_train(){
@@ -115,6 +100,8 @@ auto vector_train(){
 
 }
 
+//optional
+
 optional<string> data(int a){
     if (a==1) return "found";
     else return {};
@@ -124,6 +111,56 @@ bool train_optional(){
     auto opt=data(0);
     string val = opt.value_or("not found");
     return opt.has_value();
+}
+
+
+//punning
+
+auto punning_train(){
+    V v1={2, 3, 19};
+
+    int* b=(int*)&v1;
+
+    float c = *(float*)((char*)&v1 + 4); // print the b's value
+    
+    cout << c << endl;
+    
+    auto d = v1.give_a();
+
+    d[0] = 33;
+    d[1] = 44;
+    d[2] = 50;
+    
+    }
+
+// Singelton
+
+class Random{
+
+    public:
+    Random(const Random&) = delete;
+
+    static Random& Get(){
+        static Random s_Instance;
+        return s_Instance;
+    }
+    static float Float() {return Get().IFloat();}
+    private:
+    Random(){}
+    float IFloat(){return Random_float;};
+    static Random s_Instance;
+    float Random_float = 0.5f;
+};
+
+
+void singleton_train(){
+    float num = Random::Get().Float();
+    
+    Random& instance = Random::Get();
+    instance.Float();
+
+    auto& ins2 = Random::Get();
+    float num2 = ins2.Float();
 }
 
 

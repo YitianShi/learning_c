@@ -1,6 +1,8 @@
+#pragma once
 #include<iostream>
 #include<chrono>
 using namespace std;
+
 class Timer
 {
 private:
@@ -22,5 +24,10 @@ void stop(){
     double ms = (ed-st) * 0.001;
 
     cout << ms << "us"<< endl;
+    }
+void record()
+{
+    stop();
+    start = chrono::high_resolution_clock::now();
 }
 };
