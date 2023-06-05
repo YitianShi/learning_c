@@ -12,7 +12,7 @@ using namespace std;
 #include<unordered_map>
 #include<algorithm>
 
-#define DEBUG 0
+//#define DEBUG 0
 
 #if DEBUG==0
 #define LOG(x) cout << "Hi, User "<<x<<endl
