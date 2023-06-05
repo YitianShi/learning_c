@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"add_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -25,13 +26,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 10,
+				"line" : 11,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 8,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 9,
 				"parent" : 0
 			}
 		]
@@ -48,14 +55,21 @@
 					"fragment" : "-std=gnu++17"
 				}
 			],
-			"includes" : 
+			"defines" : 
 			[
 				{
 					"backtrace" : 2,
+					"define" : "EBUG=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
 					"path" : "/usr/local/include/opencv4"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "/home/yitian/Desktop/c++/include"
 				}
 			],

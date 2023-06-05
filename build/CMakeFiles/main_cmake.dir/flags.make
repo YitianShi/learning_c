@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_FLAGS =  -pthread -g   -std=gnu++17
 
-CXX_DEFINES = 
+CXX_DEFINES = -DEBUG=1
 
 CXX_INCLUDES = -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include 
 

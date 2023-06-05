@@ -1,12 +1,12 @@
 [
 {
   "directory": "/home/yitian/Desktop/c++/build",
-  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/main.cpp.o -c /home/yitian/Desktop/c++/main.cpp",
+  "command": "/usr/bin/g++  -DEBUG=1 -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/main.cpp.o -c /home/yitian/Desktop/c++/main.cpp",
   "file": "/home/yitian/Desktop/c++/main.cpp"
 },
 {
   "directory": "/home/yitian/Desktop/c++/build",
-  "command": "/usr/bin/g++   -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/func.cpp.o -c /home/yitian/Desktop/c++/func.cpp",
+  "command": "/usr/bin/g++  -DEBUG=1 -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/func.cpp.o -c /home/yitian/Desktop/c++/func.cpp",
   "file": "/home/yitian/Desktop/c++/func.cpp"
 }
 ]

@@ -15,7 +15,7 @@ using namespace std;
 #define DEBUG 0
 
 #if DEBUG==0
-#define LOG(x)
+#define LOG(x) cout << "Hi, User "<<x<<endl
 #else
 #define LOG(x) cout << "Hi, Debuger "<<x<<endl
 #endif

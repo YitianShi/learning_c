@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/yitian/Desktop/c++/func.cpp
-iostream
--
-animal.hpp
-/home/yitian/Desktop/c++/animal.hpp
-
 /home/yitian/Desktop/c++/main.cpp
 iostream
 -
