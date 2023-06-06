@@ -1,0 +1,23 @@
+ADAS
+
+
+Traffic-Aware Cruise Control (ALL, Adaptive Cruise Control, ALL, limited by visibility, obstructed sensors)
+
+Autosteer (ALL, Lane Keeping Assistant (LKA))
+
+Navigate on Autopilot (EA&FSD, based on Autosteer for automatic off-ramps 
+
+Auto-Lane Change (EA&FSD, ultrasonic sensors, take only 5m, obstructed sensors)
+
+Autopark(EA&FSD, limited by slope, curbs of other materials, weather conditions)
+
+summon, Smart Summon (EA&FSD, automatically park and retrieve)
+
+Traffic and Stop Sign Control (FSD, upcoming traffic light, stop sign, or road marking) (Autosteer or Traffic-Aware Cruise Control is engaged)
+
+
+
+Driver Alert
+
+
+
