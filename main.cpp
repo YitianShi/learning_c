@@ -4,6 +4,7 @@
 #include "arr.hpp"
 #include "timer.hpp"
 #include "trd.hpp"
+#include "single.hpp"
 #include "opencv2/opencv.hpp"
 
 

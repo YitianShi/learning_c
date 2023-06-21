@@ -112,6 +112,7 @@ CMakeFiles/main_cmake.dir/main.cpp.o: include/animal.hpp
 CMakeFiles/main_cmake.dir/main.cpp.o: include/arr.hpp
 CMakeFiles/main_cmake.dir/main.cpp.o: include/box.hpp
 CMakeFiles/main_cmake.dir/main.cpp.o: include/iou.hpp
+CMakeFiles/main_cmake.dir/main.cpp.o: include/single.hpp
 CMakeFiles/main_cmake.dir/main.cpp.o: include/timer.hpp
 CMakeFiles/main_cmake.dir/main.cpp.o: include/trd.hpp
 

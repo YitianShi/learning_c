@@ -19,6 +19,8 @@ timer.hpp
 /home/yitian/Desktop/c++/timer.hpp
 trd.hpp
 /home/yitian/Desktop/c++/trd.hpp
+single.hpp
+/home/yitian/Desktop/c++/single.hpp
 opencv2/opencv.hpp
 /home/yitian/Desktop/c++/opencv2/opencv.hpp
 
@@ -1090,6 +1092,14 @@ include/iou.hpp
 box.hpp
 include/box.hpp
 
+include/single.hpp
+iostream
+-
+thread
+-
+mutex
+-
+
 include/timer.hpp
 iostream
 -
@@ -1106,5 +1116,7 @@ future
 mutex
 -
 vector
+-
+list
 -
 
