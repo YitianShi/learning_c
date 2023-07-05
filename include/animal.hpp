@@ -5,8 +5,8 @@
 using namespace std;
 
 
-struct Node{
-    Node *prev = NULL, *next=NULL;
+struct Node1{
+    Node1 *prev = NULL, *next=NULL;
     int val = 0;
     static int id;
 };

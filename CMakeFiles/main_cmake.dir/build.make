@@ -94,6 +94,21 @@ main_cmake_EXTERNAL_OBJECTS =
 main_cmake: CMakeFiles/main_cmake.dir/main.cpp.o
 main_cmake: CMakeFiles/main_cmake.dir/func.cpp.o
 main_cmake: CMakeFiles/main_cmake.dir/build.make
+main_cmake: /usr/local/lib/libopencv_gapi.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_highgui.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_ml.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_objdetect.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_photo.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_stitching.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_video.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_videoio.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_imgcodecs.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_dnn.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_calib3d.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_features2d.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_flann.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_imgproc.so.4.6.0
+main_cmake: /usr/local/lib/libopencv_core.so.4.6.0
 main_cmake: CMakeFiles/main_cmake.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yitian/Desktop/c++/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable main_cmake"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main_cmake.dir/link.txt --verbose=$(VERBOSE)

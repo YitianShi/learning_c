@@ -16,8 +16,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include/opencv4"
   "include"
+  "/usr/local/cuda/include"
+  "/usr/local/include/opencv4"
   )
 
 # Targets to which this target links.

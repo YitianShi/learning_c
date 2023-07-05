@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread -g   -std=gnu++17
 
 CXX_DEFINES = -DEBUG=1
 
-CXX_INCLUDES = -I/usr/local/include/opencv4 -I/home/yitian/Desktop/c++/include 
+CXX_INCLUDES = -I/home/yitian/Desktop/c++/include -I/usr/local/cuda/include -isystem /usr/local/include/opencv4 
 

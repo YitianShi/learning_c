@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/yitian/Desktop/c++/func.cpp
+iostream
+-
+animal.hpp
+/home/yitian/Desktop/c++/animal.hpp
+
 /home/yitian/Desktop/c++/main.cpp
 iostream
 -
@@ -19,8 +25,8 @@ timer.hpp
 /home/yitian/Desktop/c++/timer.hpp
 trd.hpp
 /home/yitian/Desktop/c++/trd.hpp
-opencv2/opencv.hpp
-/home/yitian/Desktop/c++/opencv2/opencv.hpp
+opencv_train.hpp
+/home/yitian/Desktop/c++/opencv_train.hpp
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp
@@ -1089,6 +1095,12 @@ vector
 include/iou.hpp
 box.hpp
 include/box.hpp
+
+include/opencv_train.hpp
+opencv2/opencv.hpp
+-
+iostream
+-
 
 include/timer.hpp
 iostream
