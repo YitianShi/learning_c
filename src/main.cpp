@@ -5,6 +5,8 @@
 #include "timer.hpp"
 #include "trd.hpp"
 #include "opencv_train.hpp"
+#include "single.hpp"
+#include "opencv2/opencv.hpp"
 
 
 using namespace std;

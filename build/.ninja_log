@@ -1,4 +1,4 @@
 # ninja log v5
-1	852	1688583792366466814	CMakeFiles/main_cmake.dir/func.cpp.o	110533a77706d281
-1	4218	1688583795730474087	CMakeFiles/main_cmake.dir/main.cpp.o	9bdfe3373072858e
-4219	4427	1688583795942474553	main_cmake	93ad8ceb1cd715b0
+5	2516	1688597930602842958	CMakeFiles/main_cmake.dir/src/func.cpp.o	a75e1085fe9d38d3
+0	9828	1688597937891019540	CMakeFiles/main_cmake.dir/src/main.cpp.o	dfde81e145bb3953
+9830	10598	1688597938683038738	main_cmake	cc9b08f8f8a5febd
