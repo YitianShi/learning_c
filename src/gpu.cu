@@ -3,6 +3,8 @@
 #include<vector>
 #include<cuda_runtime.h>
 #include <cstdlib>
+#include <cublas_v2.h>
+
 using namespace std;
 const int BLOCK= 25;
 __global__
@@ -116,7 +118,6 @@ int main(int argc, char *argv[])
     cudaEventSynchronize(event2);
     cudaEventElapsedTime(&time_0, event, event2);
 
-
     cudaStreamDestroy(stream);
     cudaEventDestroy(event);
     cudaEventDestroy(event2);
@@ -127,6 +128,138 @@ int main(int argc, char *argv[])
 
     printf("%f ms",time_0);
 }
+
+void cublas_try(unsigned int m, unsigned int n, unsigned int k,
+                cudaStream_t &streamId){
+
+    //Initialize matrices in host
+    float *h_A, *h_B, *h_C;
+
+    unsigned int size_A = m*k;
+    unsigned int mem_A = sizeof(float)*size_A;
+    for (int i = 0; i < size_A; i++) {
+        float af = rand() / double(RAND_MAX);
+        h_A[i] = af;
+    }
+
+    unsigned int size_B = k*n;
+    unsigned int mem_B = sizeof(float)*size_B;
+    for (int i = 0; i < size_B; i++) {
+        float af = rand() / double(RAND_MAX);
+        h_B[i] = af;
+    }
+
+    unsigned int size_C = m*n;
+    unsigned int mem_C = sizeof(float)*size_C;
+
+    //Initialize matrices in device
+
+    float *d_A, *d_B, *d_C;
+    cudaMalloc((void**) &d_A, mem_A);
+    cudaMalloc((void**) &d_B, mem_B);
+    cudaMalloc((void**) &d_C, mem_C);
+    cudaMemcpy(d_A, h_A, size_A, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, h_B, size_B, cudaMemcpyHostToDevice);
+    
+    dim3 DimGrid(1, 1);
+    dim3 DimBlock(1, 1);
+
+    float alpha=1.0f;
+    float beta=0.0f;
+    int batch = 25;
+    long long int stride_A = 1, stride_B = 1, stride_C = 1;
+
+    //create
+    cublasHandle_t handle;
+    cublasCreate(&handle);
+
+    // cublasStatus_t cublasIsamax(handle, len, *x, row, *res); //cublasIsamin
+    
+    /*  cublasSgemv(
+        handle, op,
+        m, n, 
+        &alpha,
+        *A, &col_A (if op is CUBLAS_OP_T else (CUBLAS_OP_N) &row_A), 
+        &x, &x_row, 
+        &beta, 
+        &y, y_row)
+        
+        alpha*op(A)*x + beta*y
+
+        cublasSgemm(
+        handle, op_a, op_b, 
+        m, n, k, 
+        &alpha, 
+        *A, &col_A (if op is CUBLAS_OP_T else (CUBLAS_OP_N) &row_A)
+        *B, &col_B (if op is CUBLAS_OP_T else (CUBLAS_OP_N)&row_B),
+        &beta, 
+        *C, &row_C)
+
+        C = alpha*op(A)*op(B) + beta*C
+    */
+
+    cublasSgemm(
+        handle, CUBLAS_OP_N, CUBLAS_OP_N, 
+        m, n, k, 
+        &alpha, 
+        d_B, n, 
+        d_A, k,
+        &beta, 
+        d_C, n);
+    // C_T(n*m) = B_T (n*k) * A_T (k*m)
+
+    cublasSgemmBatched(
+        handle, CUBLAS_OP_N, CUBLAS_OP_N, 
+        m, n, k, 
+        &alpha, 
+        &d_B, n,
+        &d_A, k,
+        &beta, 
+        &d_C, n, batch);
+    //segmented sum
+    
+    cublasSgemmStridedBatched(
+        handle, CUBLAS_OP_N, CUBLAS_OP_N, 
+        m, n, k, 
+        &alpha, 
+        d_B, n, stride_A,
+        d_A, k, stride_B,
+        &beta, 
+        d_C, n, stride_C, 
+        batch);
+    // C+i*strideC = alpha*op(A+StrideA)*op(B+strIdeB) + beta*(C+i*strideC)
+
+    
+    cudaDataType_t A_type = CUDA_R_16F, B_type = CUDA_R_16F, C_type = CUDA_R_16F;
+    cublasComputeType_t Com_type = CUBLAS_COMPUTE_16F;
+    cublasGemmEx(
+        handle, CUBLAS_OP_N, CUBLAS_OP_N, 
+        m, n, k, 
+        &alpha, 
+        d_B, B_type, n,
+        d_A, A_type, k,
+        &beta, 
+        d_C, C_type, n, 
+        Com_type, CUBLAS_GEMM_DEFAULT);
+    
+
+    //stream
+    /*
+    cublasSetStream(handle, streamId);
+    cublasGetStream(handle, &streamId);
+    */
+
+    
+
+    //Calculate
+    //cublasSgemm()
+
+    cublasDestroy(handle);
+    cudaMemcpy(h_C, d_C, mem_C, cudaMemcpyDeviceToHost);
+
+
+}
+
 
 
 
