@@ -29,7 +29,7 @@ void vectMul(float* A, float* B, float* C, int M, int N, int K)
 }
 
 __global__
-void vectMul2(float* A, float* B, float* C, int numACol, int numARow, int numBCol, int numBRow, int numCCol, int numCRow)
+void vectMul2(float* A, float* B, float* C, int width, int numARow, int numBCol)
 {
     __shared__ float sharedM[BLOCK][BLOCK];
     __shared__ float sharedN[BLOCK][BLOCK];
@@ -43,15 +43,15 @@ void vectMul2(float* A, float* B, float* C, int numACol, int numARow, int numBCo
     int c = bx*BLOCK + tx;
 
     float Csub = 0.0;
-    for (int i = 0; i < (int)(ceil((float)numACol / BLOCK));i++)
+    for (int i = 0; i < (int)(ceil((float)width / BLOCK));i++)
     {
-        if (i*BLOCK + tx < numACol && r < numARow)
-        sharedM[ty][tx] = A[r*numACol + i*BLOCK + tx];
+        if (i*BLOCK + tx < width && r < numARow)
+        sharedM[ty][tx] = A[r*width + i*BLOCK + tx];
         else
         sharedM[ty][tx] = 0.0;
 
-        if (i*BLOCK + ty < numBRow && c < numBCol)
-        sharedN[ty][tx] = B[(i*BLOCK + ty)*numBCol + c];
+        if (i*BLOCK + ty < width && c < numBCol)
+        sharedN[ty][tx] = B[(i*BLOCK + ty)*width + c];
         else
         sharedN[ty][tx] = 0.0;
 
@@ -62,8 +62,8 @@ void vectMul2(float* A, float* B, float* C, int numACol, int numARow, int numBCo
         __syncthreads();
     }
 
-    if (r<numCRow && c<numCCol)
-    C[r*numCCol + c] = Csub;
+    if (r<numARow && c<numBCol)
+    C[r*numBCol + c] = Csub;
 }
 
 
@@ -85,13 +85,20 @@ int main(int argc, char *argv[])
         B[i] = bf;
     }
 
-    float* A_d, *B_d, *C_d;
+    float* A_d, *B_d, *C_d, time_0;
+
+    cudaStream_t stream;
+    cudaEvent_t event, event2;
+    cudaStreamCreate(&stream);
+    cudaEventCreate(&event);
+    cudaEventCreate(&event2);
 
     cudaMalloc((void**) &A_d, size);
     cudaMalloc((void**) &B_d, size);
-    cudaMemcpy(A_d, A, size, cudaMemcpyHostToDevice);
-    cudaMemcpy(B_d, B, size, cudaMemcpyHostToDevice);
+    cudaMemcpyAsync(A_d, A, size, cudaMemcpyHostToDevice, stream);
+    cudaMemcpyAsync(B_d, B, size, cudaMemcpyHostToDevice, stream);
     cudaMalloc((void**) &C_d, size);
+    cudaMemcpyAsync(C, C_d, size, cudaMemcpyDeviceToHost, stream);
 
     int thread_per_block = 256;
     int block_per_grid = (n + thread_per_block-1)/thread_per_block;
@@ -99,11 +106,26 @@ int main(int argc, char *argv[])
     dim3 DimGrid(block_per_grid, 1, 1);
     dim3 DimBlock(thread_per_block, 1, 1);
 
-    vectAdd <<<block_per_grid,thread_per_block>>>(A_d, B_d, C_d, n);
-    cudaMemcpy(C, C_d, size, cudaMemcpyDeviceToHost);
+    //vectAdd <<<block_per_grid,thread_per_block, 0, stream>>>(A_d, B_d, C_d, n);
+    cudaEventRecord(event, stream);
+    vectMul2 <<<block_per_grid,thread_per_block, 0, stream>>>(A_d, B_d, C_d, n, n, n);
+    cudaStreamSynchronize(stream);
+    cudaEventRecord(event2, stream);
+
+    cudaEventSynchronize(event);
+    cudaEventSynchronize(event2);
+    cudaEventElapsedTime(&time_0, event, event2);
+
+
+    cudaStreamDestroy(stream);
+    cudaEventDestroy(event);
+    cudaEventDestroy(event2);
+
     cudaFree(A_d);
     cudaFree(B_d);
     cudaFree(C_d);
+
+    printf("%f ms",time_0);
 }
 
 
