@@ -4,6 +4,15 @@
 #include<cuda_runtime.h>
 #include <cstdlib>
 #include <cublas_v2.h>
+#include "NvInfer.h"
+#include "NvInferPlugin.h"
+#include "NvInferRuntimeCommon.h"
+#include "NvInferRuntime.h"
+#include "NvInferVersion.h"
+#include "NvOnnxParser.h"
+#include "NvInferPluginUtils.h"
+#include "NvOnnxConfig.h"
+
 
 using namespace std;
 const int BLOCK= 25;
