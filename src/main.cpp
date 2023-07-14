@@ -13,7 +13,7 @@ using namespace std;
 
 extern int sta;
 extern void forest(int a=20);
-
+extern void stones();
 
 int Node1::id;
 int main(int, char**) {
@@ -32,7 +32,8 @@ int main(int, char**) {
    
     LOG("Shi");
     //multi_thread();
-    trd_train();
+    //trd_train();
+    stones();
     }
 
 

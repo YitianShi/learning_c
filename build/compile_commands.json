@@ -9,5 +9,11 @@
   "directory": "/home/yitian/Desktop/c++/build",
   "command": "/usr/bin/g++  -DEBUG=1 -I../include -I/usr/local/cuda/include -isystem /usr/local/include/opencv4   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/src/func.cpp.o -c /home/yitian/Desktop/c++/src/func.cpp",
   "file": "/home/yitian/Desktop/c++/src/func.cpp"
+},
+
+{
+  "directory": "/home/yitian/Desktop/c++/build",
+  "command": "/usr/bin/g++  -DEBUG=1 -I../include -I/usr/local/cuda/include -isystem /usr/local/include/opencv4   -pthread -g   -std=gnu++17 -o CMakeFiles/main_cmake.dir/src/inno.cpp.o -c /home/yitian/Desktop/c++/src/inno.cpp",
+  "file": "/home/yitian/Desktop/c++/src/inno.cpp"
 }
 ]

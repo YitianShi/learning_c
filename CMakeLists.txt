@@ -6,7 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(INCLUDE_DIRECTORIES "include")
 set(SOURCES 
 src/main.cpp
-src/func.cpp)
+src/func.cpp
+src/inno.cpp
+)
 
 find_package(CUDA REQUIRED)
 find_package(OpenCV)
